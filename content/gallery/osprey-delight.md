@@ -1,7 +1,7 @@
 ---
 weight: 20
 date: "2019-09-18T21:57:17-07:00"
-title: "Osprey Delight"
+title: "Osprey Delight test"
 image: "images/osprey-delight.png"
 color: "#C0C0C0	"
 type: "github"
