@@ -1,4 +1,5 @@
 ---
+weight: 1
 # [str] Title of the project. This is also visible when hovering over a gallery item.
 title: "Stock Ticker"
 # [str] Optional subtitle of the project. 
@@ -13,18 +14,18 @@ date: "2021-03-16T19:25:59-04:00"
 # [str] Gallery image file. 
 #   If the specified image is found in the 'assets' directory  the image will be normalized to a specified height. 
 #   If ommited AND type is 'github' (see below), will attempt to fetch from '{repo_url}/.github/logo.png'. 
-image: ""
+image: "images/stock_ticker.png"
 # [str] Alternatively, you can specify an absolute image URL (comment out the following line).
 # imageUrl: ""
 # [str] Alternative (image) description.
 #   If ommited with type 'github', will use 'description' field from GitHub API.
 alt: ""
 # [css] Background color of the gallery item.
-color: "#fff"
+color: "#C0C0C0"
 # [enum] Possible types:
 #   - normal: Just as in the original Osprey theme
 #   - github: Fetch repo data using GitHub API
-type: "normal"
+type: "github"
 # [str] Link to view the project.
 linkView: ""
 # [str] Link to show the project's code.
@@ -33,20 +34,25 @@ linkCode: ""
 # [map] Configure 'github'-type specific options here:
 github: 
     # [str] Repo is a combination of "{user_or_org}/{repository_name}", e.g. "kdevo/osprey-delight.
-    repo: "YOUR-GITHUB-NAME/stock-ticker"
+    repo: "yilun306/Stock_ticker_app"
     # [bool] Show repository information such project language below the buttons.
     showInfo: true
 # [map] Configure optional terminal to be displayed when opening up the gallery item:
 terminal:
     lines:
     - type: input
-      data: ls -ltra dummy/
-      wait: 1250
+      data: docker pull yilun306/financial_portfolio_calculator:latest
+      wait: 400
     - type: progress
       data: 100
-      wait: 200
-    # - data: ls: cannot access 'dummy/' directory.
-    #   wait: 75
-# [bool] Draft mode will decide if file will be published to 'public/' directory.
+      wait: 1000
+    - type: input
+      data: docker run -it yilun306/financial_portfolio_calculator
+      wait: 400
+    - data: ☕ Done! Have fun using Osprey Delight!
+      wait: 900
+    - type: input
+      data: exit
+      wait: 500
 draft: false
 ---
