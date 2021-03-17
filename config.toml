@@ -42,7 +42,7 @@ ignoreErrors = ["error-remote-getjson"]
   # [str] Link to your LinkedIn.
   linkedin = ""
   # [str] Link to your GitHub.
-  github = "https://github.com/kdevo/osprey-delight"
+  github = "https://github.com/yilun306"
   # [str] Link to your Facebook.
   facebook = ""
   # [str] Link to your Instagram.
@@ -98,7 +98,7 @@ ignoreErrors = ["error-remote-getjson"]
   weight = 4
 [[menu.main]]
   # Use icon here to neatly back reference an external site/blog/whatever:
-  pre = "<i class='icon icon-link-ext'></i>&nbsp;"
+  pre = "<i class='icon icon-link-ext'></i>"
   name = ""
-  url  = "https://youtube.com"
+  url  = "mailto:yilun.xie@duke.edu"
   weight = 5

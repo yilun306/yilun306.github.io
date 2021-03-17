@@ -55,3 +55,5 @@ other = "StackOverflow"
 other = "Oh, but first - please enable JavaScript in your browser. Otherwise, your expierence will be very limited!"
 [nojsForm]
 other = "Please enable JavaScript to use the contact form."
+[blog]
+other = "projects"
