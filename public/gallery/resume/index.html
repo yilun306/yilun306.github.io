@@ -7,10 +7,10 @@
 
   <title>
     
-    Math Typesetting | Yilun Xie
+    Resume | Yilun Xie
   </title>
 
-  <meta name="title" content="Math Typesetting | Yilun Xie">
+  <meta name="title" content="Resume | Yilun Xie">
 
   <meta charset="utf-8">
   
@@ -20,25 +20,25 @@
   <meta name="referrer" content="no-referrer-when-downgrade">
   <base href="https://yilun306.github.io/">
 
-  <meta name="description" content="A brief guide to setup KaTeX">
+  <meta name="description" content="Portfolio">
 
   <meta name="author" content="Yilun Xie">
 
   
 
-  <meta property="og:title" content="Math Typesetting | Yilun Xie">
+  <meta property="og:title" content="Resume | Yilun Xie">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yilun306.github.io/">
 
   <meta property="og:image" content="https://yilun306.github.io//images/osprey-delight.png">
 
-  <meta name="og:description" content="A brief guide to setup KaTeX">
+  <meta property="og:description" content="Portfolio">
 
   <link rel="icon" type="image/png" href="rockets.png">
 
   <meta name="theme-color" content="#0097a7">
 
-  <link rel="canonical" href="https://yilun306.github.io/blog/math-typesetting/">
+  <link rel="canonical" href="https://yilun306.github.io/gallery/resume/">
   
   
 
@@ -111,43 +111,142 @@
 
       <section class="container">
         <section class="content">
-          <h1> Math Typesetting </h1>
+          <h1> Resume </h1>
 
             <div class="sub-header">
-              March 8, 2019 · One minute read
+              March 16, 2021 · One minute read
             </div>
 
           <article class="entry-content">
-            <p>Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.</p>
-<p>In this example we will be using <a href="https://katex.org/">KaTeX</a></p>
-<ul>
-<li>Create a partial under <code>/layouts/partials/math.html</code></li>
-<li>Within this partial reference the <a href="https://katex.org/docs/autorender.html">Auto-render Extension</a> or host these scripts locally.</li>
-<li>Include the partial in your templates like so:</li>
-</ul>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">{{</span> <span class="k">if</span> or .Params.math .Site.Params.math <span class="o">}}</span>
-<span class="o">{{</span> partial <span class="s2">&#34;math.html&#34;</span> . <span class="o">}}</span>
-<span class="o">{{</span> end <span class="o">}}</span>
-</code></pre></div><ul>
-<li>To enable KaTex globally set the parameter <code>math</code> to <code>true</code> in a project&rsquo;s configuration</li>
-<li>To enable KaTex on a per page basis include the parameter <code>math: true</code> in content files</li>
-</ul>
-<p><strong>Note:</strong> Use the online reference of <a href="https://katex.org/docs/supported.html">Supported TeX Functions</a></p>
+            <script type="text/javascript" src="/js/pdf-js/build/pdf.js"></script>
+<style>
+#the-canvas {
+  border: 1px solid black;
+  direction: ltr;
+  width: 100%;
+  height: auto;
+}
+#paginator{
+    text-align: center;
+    margin-bottom: 10px;
+}
+</style>
 
-<h3 id="examples">Examples</h3>
+<div id="paginator">
+    <button id="prev">Previous</button>
+    <button id="next">Next</button>
+    &nbsp; &nbsp;
+    <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+</div>
+<div id="embed-pdf-container">
+    <canvas id="the-canvas"></canvas>
+</div>
 
-<p>Block math:
-$$
-\varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
-$$</p>
+<script type="text/javascript">
+window.onload = function() {
+
+
+
+var url = "https:\/\/yilun306.github.io\/" + "YilunXie_resume.pdf";
+
+
+var pdfjsLib = window['pdfjs-dist/build/pdf'];
+
+
+pdfjsLib.GlobalWorkerOptions.workerSrc = "https:\/\/yilun306.github.io\/" + '/js/pdf-js/build/pdf.worker.js';
+
+
+var pdfDoc = null,
+    pageNum = 1,
+    pageRendering = false,
+    pageNumPending = null,
+    scale = 3,
+    canvas = document.getElementById('the-canvas'),
+    ctx = canvas.getContext('2d');
+
+
+
+function renderPage(num) {
+  pageRendering = true;
+  
+  pdfDoc.getPage(num).then(function(page) {
+    var viewport = page.getViewport({scale: scale});
+    canvas.height = viewport.height;
+    canvas.width = viewport.width;
+
+    
+    var renderContext = {
+      canvasContext: ctx,
+      viewport: viewport
+    };
+    var renderTask = page.render(renderContext);
+
+    
+    renderTask.promise.then(function() {
+      pageRendering = false;
+      if (pageNumPending !== null) {
+        
+        renderPage(pageNumPending);
+        pageNumPending = null;
+      }
+    });
+  });
+
+  
+  document.getElementById('page_num').textContent = num;
+}
+
+
+
+function queueRenderPage(num) {
+  if (pageRendering) {
+    pageNumPending = num;
+  } else {
+    renderPage(num);
+  }
+}
+
+
+
+function onPrevPage() {
+  if (pageNum <= 1) {
+    return;
+  }
+  pageNum--;
+  queueRenderPage(pageNum);
+}
+document.getElementById('prev').addEventListener('click', onPrevPage);
+
+
+
+function onNextPage() {
+  if (pageNum >= pdfDoc.numPages) {
+    return;
+  }
+  pageNum++;
+  queueRenderPage(pageNum);
+}
+document.getElementById('next').addEventListener('click', onNextPage);
+
+
+
+pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
+  pdfDoc = pdfDoc_;
+  document.getElementById('page_count').textContent = pdfDoc.numPages;
+
+  
+  renderPage(pageNum);
+});
+}
+
+</script>
+
           </article>
 
           <div class="pagination">
             
-              <a href="https://yilun306.github.io/blog/emoji-support/">&laquo; Emoji Support</a>
             
-            
-              <a href="https://yilun306.github.io/blog/placeholder-text/">Placeholder Text &raquo;</a>
+              <a href="https://yilun306.github.io/gallery/test/">Test &raquo;</a>
             
           </div>
         </section>

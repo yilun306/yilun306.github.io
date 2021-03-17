@@ -1,28 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Galleries on Osprey Delight Demo</title>
+    <title>Galleries on Yilun Xie</title>
     <link>https://yilun306.github.io/gallery/</link>
-    <description>Recent content in Galleries on Osprey Delight Demo</description>
+    <description>Recent content in Galleries on Yilun Xie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 16 Mar 2021 19:25:59 -0400</lastBuildDate><atom:link href="https://yilun306.github.io/gallery/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Mar 2021 21:00:32 -0400</lastBuildDate><atom:link href="https://yilun306.github.io/gallery/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Osprey</title>
-      <link>https://yilun306.github.io/gallery/osprey/</link>
-      <pubDate>Mon, 15 May 2017 21:57:17 -0700</pubDate>
+      <title>Stock Ticker</title>
+      <link>https://yilun306.github.io/gallery/stock-ticker/</link>
+      <pubDate>Tue, 16 Mar 2021 19:25:59 -0400</pubDate>
       
-      <guid>https://yilun306.github.io/gallery/osprey/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Toma Nistor</title>
-      <link>https://yilun306.github.io/gallery/toma-nistor/</link>
-      <pubDate>Mon, 15 May 2017 20:00:16 -0700</pubDate>
-      
-      <guid>https://yilun306.github.io/gallery/toma-nistor/</guid>
-      <description>Author of the original Osprey theme.</description>
+      <guid>https://yilun306.github.io/gallery/stock-ticker/</guid>
+      <description>(Available in Docker Container) </description>
     </item>
     
     <item>
@@ -35,31 +26,12 @@
     </item>
     
     <item>
-      <title>Osprey Delight test</title>
-      <link>https://yilun306.github.io/gallery/osprey-delight/</link>
-      <pubDate>Wed, 18 Sep 2019 21:57:17 -0700</pubDate>
+      <title>Resume</title>
+      <link>https://yilun306.github.io/gallery/resume/</link>
+      <pubDate>Tue, 16 Mar 2021 21:00:32 -0400</pubDate>
       
-      <guid>https://yilun306.github.io/gallery/osprey-delight/</guid>
-      <description>{{! github-description !}}
-Check it out.</description>
-    </item>
-    
-    <item>
-      <title>kdevo</title>
-      <link>https://yilun306.github.io/gallery/kdevo/</link>
-      <pubDate>Fri, 17 May 2019 22:25:16 -0700</pubDate>
-      
-      <guid>https://yilun306.github.io/gallery/kdevo/</guid>
-      <description>Author of Osprey Delight.</description>
-    </item>
-    
-    <item>
-      <title>Stock Ticker</title>
-      <link>https://yilun306.github.io/gallery/stock-ticker/</link>
-      <pubDate>Tue, 16 Mar 2021 19:25:59 -0400</pubDate>
-      
-      <guid>https://yilun306.github.io/gallery/stock-ticker/</guid>
-      <description></description>
+      <guid>https://yilun306.github.io/gallery/resume/</guid>
+      <description>#the-canvas { border: 1px solid black; direction: ltr; width: 100%; height: auto; } #paginator{ text-align: center; margin-bottom: 10px; }  Previous Next &amp;nbsp; &amp;nbsp; Page:  /     window.onload = function() { var url = &#34;https:\/\/yilun306.github.io\/&#34; + &#34;YilunXie_resume.pdf&#34;; var pdfjsLib = window[&#39;pdfjs-dist/build/pdf&#39;]; pdfjsLib.GlobalWorkerOptions.workerSrc = &#34;https:\/\/yilun306.github.io\/&#34; + &#39;/js/pdf-js/build/pdf.worker.js&#39;; var pdfDoc = null, pageNum = 1, pageRendering = false, pageNumPending = null, scale = 3, canvas = document.</description>
     </item>
     
   </channel>
