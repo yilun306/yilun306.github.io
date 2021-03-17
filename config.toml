@@ -20,8 +20,8 @@ ignoreErrors = ["error-remote-getjson"]
   # [str] This is the logo that will be shown in the left corner of the nav bar.
   #   Usually, you would like to use something bigger than a favicon - but not too big either.
   #   Make sure that the image does not overlay the nav links. Don't be afraid of experimenting! 
-  logoSmall = "favicon.png"
-  favicon = "favicon.png"
+  logoSmall = "/images/my_name.png"
+  favicon = "rockets.png"
   opengraphImage = "/images/osprey-delight.png"
   googleTagManager = ""
   # [bool] The following will enforce redirection to the baseURL for all sub-directories/-pages.
@@ -85,7 +85,7 @@ ignoreErrors = ["error-remote-getjson"]
   url  = "/#about"
   weight = 1
 [[menu.main]]
-  name = "Work"
+  name = "Featured"
   url  = "/#work"
   weight = 2
 [[menu.main]]
