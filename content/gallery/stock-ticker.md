@@ -40,11 +40,11 @@ github:
 # [map] Configure optional terminal to be displayed when opening up the gallery item:
 terminal:
     lines:
+    # - type: input
+    #   data: docker pull yilun306/financial_portfolio_calculator:latest
+    #   wait: 300
     - type: input
-      data: docker pull yilun306/financial_portfolio_calculator:latest
-      wait: 300
-    - type: input
-      data: docker run -it yilun306/financial_portfolio_calculator
+      data: docker run -it yilun306/financial_portfolio_calculator:latest
       wait: 300
     - type: progress
       data: 100
