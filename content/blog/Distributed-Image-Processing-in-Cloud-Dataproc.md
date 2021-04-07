@@ -1,7 +1,7 @@
 ---
 title: "Distributed Image Processing in Cloud Dataproc"
 date: 2021-03-20T17:55:56-04:00
-draft: true
+draft: false
 ---
 
 [Github Link: https://github.com/yilun306/Distributed-Image-Processing-in-Cloud-Dataproc](https://github.com/yilun306/Distributed-Image-Processing-in-Cloud-Dataproc)

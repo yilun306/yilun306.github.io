@@ -48,5 +48,5 @@ terminal:
     # - data: ls: cannot access 'dummy/' directory.
     #   wait: 75
 # [bool] Draft mode will decide if file will be published to 'public/' directory.
-draft: true
+draft: false
 ---
