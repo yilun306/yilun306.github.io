@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+  
+
+  
+
+  <title>
+    
+    Distributed Image Processing in Cloud Dataproc | Yilun Xie
+  </title>
+
+  <meta name="title" content="Distributed Image Processing in Cloud Dataproc | Yilun Xie">
+
+  <meta charset="utf-8">
+  
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <base href="https://yilun306.github.io/">
+
+  <meta name="description" content="Portfolio">
+
+  <meta name="author" content="Yilun Xie">
+
+  
+
+  <meta property="og:title" content="Distributed Image Processing in Cloud Dataproc | Yilun Xie">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yilun306.github.io/">
+
+  <meta property="og:image" content="https://yilun306.github.io//images/osprey-delight.png">
+
+  <meta property="og:description" content="Portfolio">
+
+  <link rel="icon" type="image/png" href="rockets.png">
+
+  <meta name="theme-color" content="#0097a7">
+
+  <link rel="canonical" href="https://yilun306.github.io/blog/distributed-image-processing-in-cloud-dataproc/">
+  
+  
+
+  <link rel="stylesheet" href="https://yilun306.github.io/style.c470e1da2588316e2a882589c1bf2d77b23799c4853f0948095f8260367d920a.css" type="text/css">
+
+  <script type="application/ld+json">
+  {"@context":"http://www.schema.org","@type":"Person","@id":"https://yilun306.github.io/","name":"Yilun Xie","url":"https://yilun306.github.io/","description":"Portfolio","sameAs":["","https://github.com/yilun306","","",""]}
+  </script>
+
+  <style>.lazyload{opacity:.0001;}.logo .lazyload{min-width:10em;}</style>
+    <script src="https://yilun306.github.io/js/vendor/lazysizes.min.js" async></script>
+</head>
+
+  <body>
+    
+
+
+
+<nav class="row middle-xs center-xs">
+  <div class="col-xs-6 col-sm-1 logo">
+    <a href="/#"><img data-src="/images/my_name.png" class="lazyload" lazyload="on" alt="Yilun Xie"></a>
+  </div>
+    
+      <div class="col-xs-3 col-sm-2 nav-item">
+        <h3><a href="/#about">About</a></h3>
+      </div>
+    
+      <div class="col-xs-3 col-sm-2 nav-item">
+        <h3><a href="/#work">Featured</a></h3>
+      </div>
+    
+      <div class="col-xs-3 col-sm-2 nav-item">
+        <h3><a href="/#blog">Projects</a></h3>
+      </div>
+    
+      <div class="col-xs-3 col-sm-2 nav-item">
+        <h3><a href="/#contact">Contact</a></h3>
+      </div>
+    
+      <div class="col-xs-3 col-sm-2 nav-item">
+        <h3><a href="mailto:yilun.xie@duke.edu"><i class='icon icon-link-ext'></i></a></h3>
+      </div>
+    
+  <div class="col-xs-6 col-sm-1 nav-toggle">
+      <a href="" class="nav-icon" onclick="return false">
+        <i id="open" class="icon icon-2x icon-menu"></i>
+      </a>
+  </div>
+</nav>
+
+<section class="nav-full row middle-xs center-xs">
+  <div class="col-xs-12">
+    <div class="row middle-xs center-xs">
+      
+        <div class="col-xs-12"><h1><a href="/#about">About</a></h1></div>
+      
+        <div class="col-xs-12"><h1><a href="/#work">Featured</a></h1></div>
+      
+        <div class="col-xs-12"><h1><a href="/#blog">Projects</a></h1></div>
+      
+        <div class="col-xs-12"><h1><a href="/#contact">Contact</a></h1></div>
+      
+        <div class="col-xs-12"><h1><a href="mailto:yilun.xie@duke.edu"><i class='icon icon-link-ext'></i></a></h1></div>
+      
+    </div>
+  </div>
+</section>
+
+    <main>
+
+      <section class="container">
+        <section class="content">
+          <h1> Distributed Image Processing in Cloud Dataproc </h1>
+
+            <div class="sub-header">
+              March 20, 2021 · 2 minutes read
+            </div>
+
+          <article class="entry-content">
+            <p><a href="https://github.com/yilun306/Distributed-Image-Processing-in-Cloud-Dataproc">Github Link: https://github.com/yilun306/Distributed-Image-Processing-in-Cloud-Dataproc</a></p>
+<h2 id="gcp-vm-setup">GCP VM Setup</h2>
+<ol>
+<li>Make sure Editor role is enabled for the developer account</li>
+<li>Setup VM in Compute Engine &gt; VM Instances &gt; Create.</li>
+<li>Choose Series N1, 2 vCPUs (n1-standard-2 instance) as Machine Type, and allow full access to all Cloud APIs.</li>
+<li>Click create, and access the console using the SSH button.</li>
+</ol>
+<h2 id="install-software">Install Software</h2>
+<ol>
+<li>Set up Scala and sbt</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt-get install -y dirmngr unzip
+sudo apt-get update
+sudo apt-get install -y apt-transport-https
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s2">&#34;deb https://dl.bintray.com/sbt/debian /&#34;</span> <span class="p">|</span> <span class="se">\
+</span><span class="se"></span>sudo tee -a /etc/apt/sources.list.d/sbt.list
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 642AC823
+sudo apt-get update
+sudo apt-get install -y bc scala sbt
+</code></pre></div><ol start="2">
+<li>Set up the Feature Detector Files</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt-get update
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">gsutil cp gs://spls/gsp124/cloud-dataproc.zip .
+unzip cloud-dataproc.zip
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> cloud-dataproc/codelabs/opencv-haarcascade
+</code></pre></div><ol start="3">
+<li>Launch Build</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sbt assembly
+</code></pre></div><h2 id="create-a-cloud-storage-bucket-and-collect-images">Create a Cloud Storage bucket and collect images</h2>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">GCP_PROJECT</span><span class="o">=</span><span class="k">$(</span>gcloud config get-value core/project<span class="k">)</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">MYBUCKET</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">USER</span><span class="p">//google</span><span class="si">}</span><span class="s2">-image-</span><span class="si">${</span><span class="nv">RANDOM</span><span class="si">}</span><span class="s2">&#34;</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="nv">MYBUCKET</span><span class="o">=</span><span class="si">${</span><span class="nv">MYBUCKET</span><span class="si">}</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">gsutil mb gs://<span class="si">${</span><span class="nv">MYBUCKET</span><span class="si">}</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl https://www.publicdomainpictures.net/pictures/20000/velka/family-of-three-871290963799xUk.jpg <span class="p">|</span> gsutil cp - gs://<span class="si">${</span><span class="nv">MYBUCKET</span><span class="si">}</span>/imgs/family-of-three.jpg
+curl https://www.publicdomainpictures.net/pictures/10000/velka/african-woman-331287912508yqXc.jpg <span class="p">|</span> gsutil cp - gs://<span class="si">${</span><span class="nv">MYBUCKET</span><span class="si">}</span>/imgs/african-woman.jpg
+curl https://www.publicdomainpictures.net/pictures/10000/velka/296-1246658839vCW7.jpg <span class="p">|</span> gsutil cp - gs://<span class="si">${</span><span class="nv">MYBUCKET</span><span class="si">}</span>/imgs/classroom.jpg
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">gsutil ls -R gs://<span class="si">${</span><span class="nv">MYBUCKET</span><span class="si">}</span>
+</code></pre></div><h2 id="create-a-cloud-dataproc-cluster">Create a Cloud Dataproc cluster</h2>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">MYCLUSTER</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">USER</span><span class="p">/_/-</span><span class="si">}</span><span class="s2">-qwiklab&#34;</span>
+<span class="nb">echo</span> <span class="nv">MYCLUSTER</span><span class="o">=</span><span class="si">${</span><span class="nv">MYCLUSTER</span><span class="si">}</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">gcloud config <span class="nb">set</span> dataproc/region us-central1
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">gcloud dataproc clusters create <span class="si">${</span><span class="nv">MYCLUSTER</span><span class="si">}</span> --bucket<span class="o">=</span><span class="si">${</span><span class="nv">MYBUCKET</span><span class="si">}</span> 
+--worker-machine-type<span class="o">=</span>n1-standard-2 --master-machine-type<span class="o">=</span>n1-standard-2 
+--initialization-actions<span class="o">=</span>gs://spls/gsp010/install-libgtk.sh --image-version<span class="o">=</span>2.0  
+</code></pre></div><h2 id="submit-your-job-to-cloud-dataproc">Submit your job to Cloud Dataproc</h2>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_default.xml 
+<span class="p">|</span> gsutil cp - gs://<span class="si">${</span><span class="nv">MYBUCKET</span><span class="si">}</span>/haarcascade_frontalface_default.xml
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> ~/cloud-dataproc/codelabs/opencv-haarcascade
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">gcloud dataproc <span class="nb">jobs</span> submit spark <span class="se">\
+</span><span class="se"></span>--cluster <span class="si">${</span><span class="nv">MYCLUSTER</span><span class="si">}</span> <span class="se">\
+</span><span class="se"></span>--jar target/scala-2.12/feature_detector-assembly-1.0.jar -- <span class="se">\
+</span><span class="se"></span>gs://<span class="si">${</span><span class="nv">MYBUCKET</span><span class="si">}</span>/haarcascade_frontalface_default.xml <span class="se">\
+</span><span class="se"></span>gs://<span class="si">${</span><span class="nv">MYBUCKET</span><span class="si">}</span>/imgs/ <span class="se">\
+</span><span class="se"></span>gs://<span class="si">${</span><span class="nv">MYBUCKET</span><span class="si">}</span>/out/
+</code></pre></div><h2 id="monitor-the-job">Monitor the job</h2>
+<p>Navigation menu &gt; Dataproc &gt; Jobs</p>
+<h2 id="check-processed-image">Check Processed Image</h2>
+<p>Navigation menu &gt; Storage</p>
+
+          </article>
+
+          <div class="pagination">
+            
+              <a href="https://yilun306.github.io/blog/overwatch/">&laquo; Overwatch Gameplay</a>
+            
+            
+              <a href="https://yilun306.github.io/blog/serverless-nlp-pipeline/">Serverless NLP Pipeline &raquo;</a>
+            
+          </div>
+        </section>
+        <br>
+        <section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname == "localhost")
+        return;
+      var disqus_shortname = '';
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view comments powered by <a href="http://disqus.com/?ref_noscript">Disqus</a>.</noscript>
+</section>
+
+      </section>
+
+    </main>
+    <footer class="row middle-xs center-xs">
+  <div class="col-xs-2">
+      <a target="_blank" rel="noopener" href=""><i class="icon icon-facebook"></i></a>
+    </div><div class="col-xs-2">
+      <a target="_blank" rel="noopener" href="https://github.com/yilun306"><i class="icon icon-github"></i></a>
+    </div><div class="col-xs-2">
+      <a target="_blank" rel="noopener" href=""><i class="icon icon-linkedin"></i></a>
+    </div><div class="col-xs-2">
+      <a target="_blank" rel="noopener" href=""><i class="icon icon-stackoverflow"></i></a>
+    </div><div class="col-xs-2">
+      <a target="_blank" rel="noopener" href=""><i class="icon icon-twitter"></i></a>
+    </div>
+  <div class="col-xs-12">
+      <small>
+      
+      Copyright &copy; 2021 Yilun Xie
+      
+      
+      </small>
+    </div>
+</footer>
+
+    
+
+
+
+
+
+
+  <script src="https://yilun306.github.io/js/bundle.min.efefa76623d124fd1f039b011acab2f7375677c65b954ed744b2c80f3bd058ba.js" type="text/javascript"></script>
+  <script>handleNavBar( false )</script>
+
+  </body>
+</html>

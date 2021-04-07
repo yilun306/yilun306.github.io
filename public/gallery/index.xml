@@ -6,7 +6,7 @@
     <description>Recent content in Galleries on Yilun Xie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 16 Mar 2021 21:00:32 -0400</lastBuildDate><atom:link href="https://yilun306.github.io/gallery/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Apr 2021 17:04:27 -0400</lastBuildDate><atom:link href="https://yilun306.github.io/gallery/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Stock Ticker</title>
       <link>https://yilun306.github.io/gallery/stock-ticker/</link>
@@ -17,12 +17,12 @@
     </item>
     
     <item>
-      <title>Test</title>
-      <link>https://yilun306.github.io/gallery/test/</link>
-      <pubDate>Fri, 12 May 2017 22:25:02 -0700</pubDate>
+      <title>Serverless NLP Pipeline</title>
+      <link>https://yilun306.github.io/gallery/serverless-nlp-pipeline/</link>
+      <pubDate>Wed, 07 Apr 2021 17:04:27 -0400</pubDate>
       
-      <guid>https://yilun306.github.io/gallery/test/</guid>
-      <description>Hugo is one of the most popular open-source static site generators. With its amazing speed and flexibility, Hugo makes building websites fun again.</description>
+      <guid>https://yilun306.github.io/gallery/serverless-nlp-pipeline/</guid>
+      <description></description>
     </item>
     
     <item>
