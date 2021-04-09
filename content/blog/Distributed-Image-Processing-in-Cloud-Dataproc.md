@@ -5,6 +5,7 @@ draft: false
 ---
 
 [Github Link: https://github.com/yilun306/Distributed-Image-Processing-in-Cloud-Dataproc](https://github.com/yilun306/Distributed-Image-Processing-in-Cloud-Dataproc)
+{{< youtube Dlx5mZk2Wrs>}}
 ## GCP VM Setup
 1. Make sure Editor role is enabled for the developer account
 2. Setup VM in Compute Engine > VM Instances > Create.
