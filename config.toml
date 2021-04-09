@@ -38,17 +38,17 @@ ignoreErrors = ["error-remote-getjson"]
 ## Social media links in footer:
 [Params.Social]
   # [str] Link to your Twitter.
-  twitter = ""
+  # twitter = ""
   # [str] Link to your LinkedIn.
-  linkedin = ""
+  linkedin = "https://www.linkedin.com/in/yilun-xie-95a1a9115/"
   # [str] Link to your GitHub.
   github = "https://github.com/yilun306"
   # [str] Link to your Facebook.
-  facebook = ""
-  # [str] Link to your Instagram.
-  # instagram = ""
-  # [str] Link to your StackOverflow.
-  stackoverflow = ""
+  # facebook = ""
+  # # [str] Link to your Instagram.
+  # # instagram = ""
+  # # [str] Link to your StackOverflow.
+  # stackoverflow = ""
 
 
 ## Theme features:
