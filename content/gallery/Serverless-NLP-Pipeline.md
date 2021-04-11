@@ -24,7 +24,7 @@ color: "#fff"
 # [enum] Possible types:
 #   - normal: Just as in the original Osprey theme
 #   - github: Fetch repo data using GitHub API
-type: "#0a1922"
+type: "github"
 # [str] Link to view the project.
 linkView: ""
 # [str] Link to show the project's code.
