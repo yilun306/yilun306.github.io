@@ -93,10 +93,6 @@ ignoreErrors = ["error-remote-getjson"]
   url  = "/#blog"
   weight = 3
 [[menu.main]]
-  name = "Contact"
-  url  = "/#contact"
-  weight = 4
-[[menu.main]]
   # Use icon here to neatly back reference an external site/blog/whatever:
   pre = "<i class='icon icon-link-ext'></i>"
   name = ""
